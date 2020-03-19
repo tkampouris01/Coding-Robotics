@@ -7,14 +7,14 @@ int r_bump = 9;
 int speed = 100;
 int s_speeed = 30;
 
-void forward(){
-	motor(l_motor, speed);
-	motor(r_motor, speed);
+void forward(){							//the robot moves forward
+	motor(l_motor, speed);					//right motor rolls forward
+	motor(r_motor, speed);					//left motor rolls forward
 }
 
-void r_turn(){
-	motor(l_motor, speed);
-	motor(r_motor, -s_speed);
+void r_turn(){							//robot turns right
+	motor(l_motor, speed);					//left motor rolls forward
+	motor(r_motor, -s_speed);				//right motor rolls backwards slowly
 }
 
 int main()

@@ -5,7 +5,7 @@ int r_motor = 2;
 int l_bump = 8;
 int r_bump = 9;
 int speed = 100;
-int s_speeed = 30;
+int s_speed = 30;
 
 void forward(){							//the robot moves forward
 	motor(l_motor, speed);					//right motor rolls forward

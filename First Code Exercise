@@ -4,7 +4,8 @@ int l_motor = 0;
 int r_motor = 2;
 int l_bump = 8;
 int r_bump = 9;
-int speed = 200;
+int speed = 100;
+int s_speeed = 30;
 
 void forward(){
 	motor(l_motor, speed);
@@ -13,23 +14,24 @@ void forward(){
 
 void r_turn(){
 	motor(l_motor, speed);
+	motor(r_motor, -s_speed);
 }
 
 int main()
 {
 	printf("Hello, World!\n");
 	
-	while(digital(r_bump) == 0){							//go forward until right bump sensor activates
+	while(digital(r_bump) == 0){				//go forward until right bump sensor activates
 		forward();
 	}
 	
-	ao();																//stop
+	ao();							//stop
 		
-	while(digital(l_bump) == 0){							//turn right until left bump sensor activates
+	while(digital(l_bump) == 0){				//turn right until left bump sensor activates
 		r_turn();
 	}
 	
-	ao();																//mission accomplished
+	ao();							//mission accomplished
 	
 	return 0;
 }

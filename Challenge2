@@ -48,7 +48,7 @@ while(digital(r_bump) == 0) {	        //as long as the bump sensor is not activa
   
    if(analog(tophat) >= black){	      //if it sees a black line, it initiates the if statement
       r_turn();
-      printf("rturn\n");								//turn right
+      printf("rturn\n");					//turn right
   }
 }				//when the robot hits the wall, it jumps out of the loop
 

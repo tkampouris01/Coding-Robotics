@@ -12,61 +12,54 @@ int l_pause = 500;
 int tophat = 5;
 int black = 500;
 
-void forward(){                           	 //robot moves forward 
-motor(l_motor, speed);                      //left wheel rolls forward
-motor(r_motor, speed);                     //right wheel rolls foward
+void forward(){                          	 //robot moves forward 
+motor(l_motor, speed);                  //left wheel rolls forward
+motor(r_motor, speed);                  //right wheel rolls foward
 }
 
-void r_turn(){                        	   //robot veers right
-motor(l_motor, speed);                    //right wheel rolls forwards
-motor(r_motor, -s_speed);                 //right wheel rolls backwards at slower speed
+void r_turn(){                        	   //robot turns right
+motor(l_motor, speed);                  //right wheel rolls forwards
+motor(r_motor, -s_speed);             //right wheel rolls backwards at slower speed
+}
+
+void r_veer(){                        	   //robot veers right
+motor(l_motor, speed);                  //right wheel rolls forwards
+motor(r_motor, speed-25);             //right wheel rolls forwards at slightly slower speed
 }
 
 void l_turn(){                          	 //robot turns left
-motor(r_motor, speed);                     //right wheels rolls forwards 
-motor(l_motor, -speed);                    //left wheel rolls backwards at same speed
+motor(r_motor, speed);                  //right wheels rolls forwards 
+motor(l_motor, -speed);                 //left wheel rolls backwards at same speed
 }
 
-int main()
-{
+int main(){
 printf("Hello, World!\n");
 
-r_turn();	                                  //robot turns right for 800 milliseconds
-printf("rturn\n");
-msleep(pause);
-
-while(analog(tophat) <= black){	             //as long as the robot is not above a black line, it goes forwards
-  forward();
-  printf("forward_1\n");                        //when it sees teh first black line, it jumps out of the loop                                         
+while(analog(tophat) <= black){	        //as long as the robot is not above a black line, it goes veers right
+  r_veer();
+  printf("forward\n");                  //when it sees the first black line, it jumps out of the loop
 }
 
-ao();	                                        //robot stops
+ao();	//robot stops
 
-forward();                                   //robot goes forward for 700 milliseconds
-printf("forward_2\n");	
-msleep(f_pause);
-
-ao();	                                         //robot stops
-
-while(digital(l_bump) == 0) {	                //as long as the bump sensor is not activated, robot moves forwards
+while(digital(r_bump) == 0) {	        //as long as the bump sensor is not activated, robot moves forwards
   forward();
-  printf("forward_3\n");
-
-  if(analog(tophat) >= black){	                //if it sees a black line, it initiates the if statement
-    r_turn();                               		//turn right
-    printf("rturn\n");
+  printf("forward3\n");
+  
+   if(analog(tophat) >= black){	      //if it sees a black line, it initiates the if statement
+      r_turn();
+      printf("rturn\n");								//turn right
   }
-}			    //when the robot hits the wall, it jumps out of the loop
+}							                  		//when the robot hits the wall, it jumps out of the loop
 
 printf("done\n");
-ao();					                       	//robot stops
-msleep(pause);
+ao();					        			//robot stops
 
-l_turn();						            	//robot turns left for 500 milliseconds
+l_turn();				          			//robot turns left for 480 milliseconds
 printf("lturn\n");
-msleep(l_pause);	
+msleep(l_pause-20);	
 
-ao();				                        	//mission accomplished
+ao();								              //mission accomplished
 
 return 0;
 }

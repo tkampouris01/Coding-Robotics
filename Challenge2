@@ -50,16 +50,16 @@ while(digital(r_bump) == 0) {	        //as long as the bump sensor is not activa
       r_turn();
       printf("rturn\n");								//turn right
   }
-}							                  		//when the robot hits the wall, it jumps out of the loop
+}				//when the robot hits the wall, it jumps out of the loop
 
 printf("done\n");
-ao();					        			//robot stops
+ao();					   	//robot stops
 
-l_turn();				          			//robot turns left for 480 milliseconds
+l_turn();				       //robot turns left for 480 milliseconds
 printf("lturn\n");
 msleep(l_pause-20);	
 
-ao();								              //mission accomplished
+ao();								       //mission accomplished
 
 return 0;
 }

@@ -50,17 +50,17 @@ void l_turn(){                          	//robot turns left
 	motor(l_motor, -speed);                 //left wheel rolls backwards at same speed
 }
 
-void linefollow(){								        //follow line function
+void linefollow(){				//follow line function
 	while(analog(f_sensor)>=150){		        //while the distance sensor reads larger than 150, the loop is true
 		forward();
    
     if(analog(r_tophat) >= black){		    //if the right tophat sensor sees the black line,
-     	l_veer2();									        //robot sharply veers left
+     	l_veer2();					//robot sharply veers left
 		printf("veer left 2\n");
 		} 
     
     if(analog(r_tophat) <= black){		    //if the right tophat sensor sees the white table,
-    	r_veer2();									        //robot sharply veers right
+    	r_veer2();					//robot sharply veers right
 		printf("veer right 2\n");
 		}
 	}
@@ -70,44 +70,44 @@ int main()
 {
 printf("Hello, World!\n");
 
-while(analog(l_tophat) <= black){				//as long as the robot is not above a black line, it goes veers right
+while(analog(l_tophat) <= black){		//as long as the robot is not above a black line, it goes veers right
 	r_veer();
-	printf("forward\n");									//when it sees the first black line, it jumps out of the loop
+	printf("forward\n");			//when it sees the first black line, it jumps out of the loop
 }
 
-ao();															      //robot stops
+ao();						//robot stops
 
-while(digital(r_bump) == 0) {						//as long as the bump sensor is not activated, robot moves forwards
+while(digital(r_bump) == 0) {			//as long as the bump sensor is not activated, robot moves forwards
 	forward();
 	printf("forward3\n");
 
-	if(analog(l_tophat) >= black){				//if it sees a black line, it initiates the if statement
+	if(analog(l_tophat) >= black){		//if it sees a black line, it initiates the if statement
 		r_turn();
-		printf("rturn\n");									//turn right
+		printf("rturn\n");		//turn right
 	}
 }																        //when the robot hits the wall, it jumps out of the loop
 
 printf("done\n");
-ao();															      //robot stops
+ao();						//robot stops
 
-l_turn();														    //robot turns left for 480 seconds
+l_turn();					//robot turns left for 480 seconds
 printf("lturn\n");
 msleep(l_pause-100);	
 
-ao();															      //robot stops
+ao();						//robot stops
 
-while(analog(r_tophat)<black){					//robot veers left until it sees the black line
+while(analog(r_tophat)<black){			//robot veers left until it sees the black line
 	l_veer();	
 	printf("looking_for_line\n");
 }
 
-ao();															      //robot stops
+ao();						//robot stops
 printf("found_line\n");
 msleep(pause);
 
-linefollow();												    //robot follows line until it sees the wall
+linefollow();					//robot follows line until it sees the wall
 ao();
-printf("found wall\n");									//mission accomplished
+printf("found wall\n");				//mission accomplished
 
 return 0;
 }

@@ -86,31 +86,31 @@ void linefollow2(){
     	r_veer2();					//robot sharply veers right
 		printf("veer right 2\n");
 		}
-	}						//robot jumps out of the loop when the left tophat sensor sees a black line
+	}					//robot jumps out of the loop when the left tophat sensor sees a black line
 }
 
-void wallfollow(){                    //wallfollow function
+void wallfollow(){                    			//wallfollow function
 	while(count<=3){
 		
 	if(analog(r_sensor) >= target){			//if the right distance sensor reads more than 250,
-		r_veer2();											//robot sharply veers left
+		r_veer2();				//robot sharply veers left
 		printf("veer right 2\n");
 		} 
     
 	if(analog(r_sensor) <= target){			//if the right distance sensor reads less than 250,
-		l_veer2();										//robot sharply veers right
+		l_veer2();				//robot sharply veers right
 		printf("veer left 2\n");
 		}
 		
-	if(analog(r_tophat)>500){           //when the right tophat sensor sees a black line,
+	if(analog(r_tophat)>500){           		//when the right tophat sensor sees a black line,
 			count++;                        //counter adds 1
 			printf("anotha one\n");
 			ao(); 
-			forward();            //robot moves forward on an mlseep so the the counter does not activate twice form the same line
-			msleep(pause);
+			forward();            		//robot moves forward on an mlseep so the the counter does
+			msleep(pause);			//not activate twice form the same line
 		}
 		
-	if(count==3){                       //when the counter reaches 3, robot breaks out of the loop
+	if(count==3){                       		//when the counter reaches 3, robot breaks out of the loop
 			printf("3 Lines\n");
 			break;
 		}
@@ -120,9 +120,9 @@ void wallfollow(){                    //wallfollow function
 int main()
 {
 	
-	wallfollow();               //it's all in the void function
+	wallfollow();               			//it's all in the void function
 	
-	ao();                       //mission accomplished
+	ao();                       			//mission accomplished
 	
 	return 0;
 }

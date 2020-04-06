@@ -19,14 +19,14 @@ void backward(){                          	 	//robot moves backward
 int main()
 {
 	
-	int test;								//variable name is "test"
+	int test;					//variable name is "test"
 	
 	for(test=1; test<=6; test++){			//"for" loop runs 6 times
-		forward();								//robot moves forwrad for 1 second
+		forward();				//robot moves forwrad for 1 second
 		msleep(pause);
-		backward();							//robot moves backward for 1 second
+		backward();				//robot moves backward for 1 second
 		msleep(pause);
-		printf("test = %d \n", test);			//robot prints the number of the loop that it is on
+		printf("test = %d \n", test);		//robot prints the number of the loop that it is on
 	}
 	
 	ao();                       			//mission accomplished

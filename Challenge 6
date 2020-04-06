@@ -1,0 +1,35 @@
+// Created on Thu April 6 2020
+
+int l_motor = 0;
+int r_motor = 2;
+int speed = 100;
+int pause = 1000;
+
+
+void forward(){                          	 	//robot moves forward 
+	motor(l_motor, speed);                  	//left wheel rolls forward
+	motor(r_motor, speed);                  	//right wheel rolls foward
+}
+
+void backward(){                          	 	//robot moves backward
+	motor(l_motor, -speed);                  	//left wheel rolls backward
+	motor(r_motor, -speed);                  	//right wheel rolls bakcward
+}
+
+int main()
+{
+	
+	int test;								//variable name is "test"
+	
+	for(test=1; test<=6; test++){			//"for" loop runs 6 times
+		forward();								//robot moves forwrad for 1 second
+		msleep(pause);
+		backward();							//robot moves backward for 1 second
+		msleep(pause);
+		printf("test = %d \n", test);			//robot prints the number of the loop that it is on
+	}
+	
+	ao();                       			//mission accomplished
+	
+	return 0;
+}
